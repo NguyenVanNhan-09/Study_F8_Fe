@@ -1,0 +1,140 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.text-white{
+    color: #fff !important;
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.clear{
+    clear: both;
+}
+
+#header{
+    --height-header: 46.5px;
+    height: var(--height-header);
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#nav{
+    display: inline-block;
+}
+#nav >li{
+    display: inline-block;
+}
+#nav li {
+    position: relative;
+}
+#nav >li> a{
+    color: #fff;
+}
+#nav li a {
+    line-height: var(--height-header);
+    padding: 0 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+#nav >li:hover> a {
+    color: #000;
+    background-color: #ccc;
+}
+
+
+/* sub nav */
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#nav .subnav a {
+    color: #000;
+    padding: 0 14px;
+}
+
+#nav .subnav li:hover {
+    background-color: #ccc;
+}
+#nav li:hover .subnav{
+    display: block;
+}
+#nav .subnav {
+    list-style-type: none;
+}
+
+/* icon header */
+#nav .icon-more{
+    font-size: 13px;
+}
+
+#header .search-btn{
+    float: right;
+}
+
+#header .icon-search-header{
+    font-size: 20px;
+    color: #fff;
+    padding: 0 18px;
+    line-height: var(--height-header);
+    display: inline-block;
+}
+
+#header .icon-search-header:hover{
+    color: #000;
+    background-color: rgb(146, 30, 30);
+}
+
+/* slider */
+#slider {
+    position: relative;
+    margin-top: 46.5px;
+    padding-top: 50%;
+    background: url(/assets/img/slider-img.jpg)top center / cover no-repeat ;
+}
+
+#slider .text-slider{
+    position: absolute;
+    bottom: 47px;
+    color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#slider .heading-text{
+    text-align: center;
+    font-weight: 500;
+}
+
+#slider .sub-heading-text{
+    margin-top: 26px;
+    font-weight: 550;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* content */
+#content {
+    height: 8000px;
+}
