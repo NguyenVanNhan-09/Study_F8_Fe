@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/img/icon-band/icon-band.png">
     <link rel="stylesheet" href="./assets/font/themify-icons-font/themify-icons/themify-icons.css">
 </head>
+
 <body>
     <div class="main">
         <div id="header">
@@ -54,7 +56,14 @@
                 <div class="content-section">
                     <h2 class="content-headinng">THE BAND</h2>
                     <p class="content-sub-heading">We love music</p>
-                    <p class="about-text">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="about-text">We have created a fictional band website. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
                     <!-- member -->
                     <div class="row text-center member-list">
@@ -134,16 +143,19 @@
                                 <!-- line-1  -->
                                 <div class="row">
                                     <div class="col col-half s-col-full">
-                                        <input type="text" name="" placeholder="Name" id="" class="form-control" required>
+                                        <input type="text" name="" placeholder="Name" id="" class="form-control"
+                                            required>
                                     </div>
                                     <div class="col col-half s-col-full s-mt-8">
-                                        <input type="email" name="" placeholder="email" id="" class="form-control " required >
+                                        <input type="email" name="" placeholder="email" id="" class="form-control "
+                                            required>
                                     </div>
                                 </div>
                                 <!-- line-2  -->
                                 <div class="row mt-8">
                                     <div class="col col-full">
-                                        <input type="text" name="" placeholder="Message" id="" class="form-control" required>
+                                        <input type="text" name="" placeholder="Message" id="" class="form-control"
+                                            required>
                                     </div>
                                 </div>
                                 <input class="from-submit-btn mt-16 s-full-with" type="submit" value="SEND">
@@ -151,28 +163,28 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
             <!-- map-section -->
             <div class="map-section">
                 <img src="./assets/img/map.jpg" alt="Map">
             </div>
-        </div> 
+        </div>
         <!-- footer -->
         <footer id="footer">
-        <div class="icon-footer-list">
-            <a href="#"><i class="ti-facebook"></i></a>
-            <a href="#"><i class="ti-instagram"></i></a>
-            <a href="#"><i class="ti-youtube"></i></a>
-            <a href="#"><i class="ti-instagram"></i></a>
-            <a href="#"><i class="ti-twitter"></i></a>
-            <a href="#"><i class="ti-linkedin"></i></a>
-        </div>
-        <p class="copyright">Powered by <a href="">w3.css</a></p>
-    </footer>
+            <div class="icon-footer-list">
+                <a href="#"><i class="ti-facebook"></i></a>
+                <a href="#"><i class="ti-instagram"></i></a>
+                <a href="#"><i class="ti-youtube"></i></a>
+                <a href="#"><i class="ti-instagram"></i></a>
+                <a href="#"><i class="ti-twitter"></i></a>
+                <a href="#"><i class="ti-linkedin"></i></a>
+            </div>
+            <p class="copyright">Powered by <a href="">w3.css</a></p>
+        </footer>
     </div>
 
 
-    
+
     <div class="model js-model ">
         <div class="model-container js-model-ctn">
             <div class="model-close js-close-btn">
@@ -188,7 +200,7 @@
                     Tickets, $15 per person
                 </label>
                 <input type="text" class="model-input" placeholder="How many?">
-    
+
                 <label for="" class="model-label">
                     <i class="ti-user"></i>
                     Send to
@@ -197,11 +209,12 @@
                 <button class="model-pay-btn">
                     pay <i class="ti-check"></i>
                 </button>
-            </div> 
+            </div>
             <footer class="model-footer">
                 <p class="model-help">Need #<a href="#">Help?</a></p>
             </footer>
         </div>
+        <!-- check -->
     </div>
     <!-- open/close buy-btn-->
     <script>
@@ -210,13 +223,13 @@
         const closeBtn = document.querySelector('.js-close-btn')
         const modelCtn = document.querySelector('.js-model-ctn')
 
-        function showModel(){
+        function showModel() {
             model.classList.add('open')
         }
-        function hideModel(){
+        function hideModel() {
             model.classList.remove('open')
         }
-        for(const buyBtn of buyBtns){
+        for (const buyBtn of buyBtns) {
             buyBtn.addEventListener('click', showModel)
         }
 
@@ -224,7 +237,7 @@
 
         model.addEventListener('click', hideModel)
 
-        modelCtn.addEventListener('click', function(event){
+        modelCtn.addEventListener('click', function (event) {
             event.stopPropagation()
         })
     </script>
@@ -234,29 +247,30 @@
         var header = document.getElementById('header')
         var mobileMenuBtn = document.getElementById('js-mobile-menu-btn')
         var headerHeight = header.clientHeight;
-        mobileMenuBtn.onclick = function(){
+        mobileMenuBtn.onclick = function () {
             var isClose = header.clientHeight === headerHeight;
-            if (isClose){
+            if (isClose) {
                 header.style.height = 'auto';
-            }else{
+            } else {
                 header.style.height = null;
             }
         }
         // tự động đóng khi chọn 1 phần tử trong menu
         var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
-        for (var i = 0 ; i < menuItems.length; i++){
+        for (var i = 0; i < menuItems.length; i++) {
             var menuItem = menuItems[i];
-            
-            menuItem.onclick = function(event){
-                var isParentMenu = this.nextElementSibling 
-                && this.nextElementSibling.classList.contains('subnav');
-                if(isParentMenu){
+
+            menuItem.onclick = function (event) {
+                var isParentMenu = this.nextElementSibling
+                    && this.nextElementSibling.classList.contains('subnav');
+                if (isParentMenu) {
                     event.preventDefault();
-                }else {
+                } else {
                     header.style.height = null;
                 }
             }
         }
     </script>
 </body>
+
 </html>
