@@ -10,11 +10,15 @@ const playBtn = $(".btn-toggle-play");
 const progress = $("#progress");
 const nextBtn = $(".btn-next");
 const prevBtn = $(".btn-prev");
-// console.log(cdThumd);
+const ramdomBtn = $(".btn-random");
+// console.log(ramdomBtn);
+
+console.log(Math.floor(Math.random()));
 
 const app = {
    currentIndex: 0,
    isPlaying: false,
+   isRamdom: false,
    songs: [
       {
          name: "Chay ngay di",
@@ -63,6 +67,7 @@ const app = {
    },
    handleEvents: function () {
       const cdWidth = cd.offsetWidth;
+      const _this = this;
 
       // Xử lý cd quay và dừng
       const cdThumdAnimate = cdThumd.animate(
@@ -123,14 +128,28 @@ const app = {
 
       // Xử lý khi click vào next
       nextBtn.onclick = () => {
-         app.nextSong();
+         if (_this.isRamdom) {
+            _this.ramdomSong();
+         } else {
+            app.nextSong();
+         }
          audio.play();
       };
 
       // Xử lý khi click vào prev
       prevBtn.onclick = () => {
-         app.prevSong();
+         if (_this.isRamdom) {
+            _this.ramdomSong();
+         } else {
+            app.prevSong();
+         }
          audio.play();
+      };
+
+      // Xử lý khi bật/tắt vào random
+      ramdomBtn.onclick = () => {
+         _this.isRamdom = !_this.isRamdom;
+         ramdomBtn.classList.toggle("active", _this.isRamdom);
       };
    },
 
@@ -151,6 +170,14 @@ const app = {
       if (this.currentIndex < 0) {
          this.currentIndex = this.songs.length - 1;
       }
+      this.loadCurrentSong();
+   },
+   ramdomSong: function () {
+      let newIndex;
+      do {
+         newIndex = Math.floor(Math.random() * this.songs.length);
+      } while (newIndex === this.currentIndex);
+      this.currentIndex = newIndex;
       this.loadCurrentSong();
    },
 
