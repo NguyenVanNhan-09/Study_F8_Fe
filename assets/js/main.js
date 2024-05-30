@@ -39,6 +39,18 @@ const app = {
          path: "../../assets/music/NoiNayCoAnh-SonTungMTP-4772041.mp3",
          image: "https://i.ytimg.com/vi/QvswgfLDuPg/maxresdefault.jpg",
       },
+      {
+         name: "Chac ai do se ve",
+         singer: "Son tung mtp",
+         path: "../../assets/music/ChacAiDoSeVeNewVersion-SonTungMTP-3698905.mp3",
+         image: "https://i.ytimg.com/vi/QvswgfLDuPg/maxresdefault.jpg",
+      },
+      {
+         name: "Hay trao cho anh",
+         singer: "Son tung mtp",
+         path: "../../assets/music/HayTraoChoAnh-SonTungMTPSnoopDogg-6010660.mp3",
+         image: "https://i.ytimg.com/vi/QvswgfLDuPg/maxresdefault.jpg",
+      },
    ],
    render: function () {
       const htmls = this.songs.map((item, index) => {
