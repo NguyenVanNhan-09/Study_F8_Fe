@@ -1,6 +1,8 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const PLAYER_STORAGE_KEY = "code_of_x";
+
 const player = $(".player");
 const heading = $("header h2");
 const cdThumd = $(".cd-thumb");
@@ -10,42 +12,51 @@ const playBtn = $(".btn-toggle-play");
 const progress = $("#progress");
 const nextBtn = $(".btn-next");
 const prevBtn = $(".btn-prev");
-const ramdomBtn = $(".btn-random");
+const randomBtn = $(".btn-random");
 const repeatBtn = $(".btn-repeat");
 const playlist = $(".playlist");
-// console.log(ramdomBtn);
+// console.log(randomBtn);
 
 const app = {
    currentIndex: 0,
    isPlaying: false,
-   isRamdom: false,
+   isRandom: false,
    isRepeat: false,
+   config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
    songs: [
       {
          name: "Chay ngay di",
          singer: "Son tung mtp",
          path: "../../assets/music/ChayNgayDi-SonTungMTP-5468704.mp3",
-         image: "https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg",
+         image: "../../assets/img/chayngaydi.jpg",
       },
       {
          name: "Chung ta cua tuong lai",
          singer: "Son tung mtp",
          path: "../../assets/music/ChungTaCuaTuongLai-SonTungMTP-14032595.mp3",
-         image: "https://1.bp.blogspot.com/-kX21dGUuTdM/X85ij1SBeEI/AAAAAAAAKK4/feboCtDKkls19cZw3glZWRdJ6J8alCm-gCNcBGAsYHQ/s16000/Tu%2BAana%2BPhir%2BSe%2BRap%2BSong%2BLyrics%2BBy%2BRaftaar.jpg",
+         image: "../../assets/img/chungtacuatuonglai.jpg",
       },
       {
-         name: "Nơi này có anh",
+         name: "Hay trao cho anh",
          singer: "Son tung mtp",
-         path: "../../assets/music/NoiNayCoAnh-SonTungMTP-4772041.mp3",
-         image: "https://i.ytimg.com/vi/QvswgfLDuPg/maxresdefault.jpg",
+         path: "../../assets/music/HayTraoChoAnh-SonTungMTPSnoopDogg-6010660.mp3",
+         image: "../../assets/img/noinaycoanh.jpg",
       },
       {
          name: "Chac ai do se ve",
          singer: "Son tung mtp",
          path: "../../assets/music/ChacAiDoSeVeNewVersion-SonTungMTP-3698905.mp3",
-         image: "https://i.ytimg.com/vi/QvswgfLDuPg/maxresdefault.jpg",
+         image: "../../assets/img/chacaidoseve.jpg",
       },
    ],
+   setConfig: function (key, value) {
+      this.config[key] = value;
+      localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));
+   },
+   loadConfig: function () {
+      this.isRandom = this.config.isRandom;
+      this.isRepeat = this.config.isRepeat;
+   },
    render: function () {
       const htmls = this.songs.map((item, index) => {
          return `
@@ -137,8 +148,8 @@ const app = {
 
       // Xử lý khi click vào next
       nextBtn.onclick = () => {
-         if (_this.isRamdom) {
-            _this.ramdomSong();
+         if (_this.isRandom) {
+            _this.randomSong();
          } else {
             app.nextSong();
          }
@@ -149,8 +160,8 @@ const app = {
 
       // Xử lý khi click vào prev
       prevBtn.onclick = () => {
-         if (_this.isRamdom) {
-            _this.ramdomSong();
+         if (_this.isRandom) {
+            _this.randomSong();
          } else {
             app.prevSong();
          }
@@ -159,9 +170,10 @@ const app = {
       };
 
       // Xử lý khi bật/tắt vào random
-      ramdomBtn.onclick = () => {
-         _this.isRamdom = !_this.isRamdom;
-         ramdomBtn.classList.toggle("active", _this.isRamdom);
+      randomBtn.onclick = () => {
+         _this.isRandom = !_this.isRandom;
+         _this.setConfig("isRandom", _this.isRandom);
+         randomBtn.classList.toggle("active", _this.isRandom);
       };
 
       // Xử lý next song khi audio ended
@@ -176,6 +188,7 @@ const app = {
       // Xử lý khi click vào repeat
       repeatBtn.onclick = () => {
          _this.isRepeat = !_this.isRepeat;
+         _this.setConfig("isRepeat", _this.isRepeat);
          repeatBtn.classList.toggle("active", _this.isRepeat);
       };
 
@@ -184,14 +197,15 @@ const app = {
          const songNode = e.target.closest(".song:not(.active)");
          if (songNode || e.target.closest(".option")) {
             // Xử lý khi click vào song
-            if (songNode) {
+            if (songNode && !e.target.closest(".option")) {
                _this.currentIndex = Number(songNode.dataset.index);
                _this.loadCurrentSong();
-               audio.play();
                _this.render();
+               audio.play();
             }
             // Xử lý khi click vào song option
             if (e.target.closest(".option")) {
+               console.log(123);
             }
          }
       };
@@ -215,7 +229,7 @@ const app = {
       }
       this.loadCurrentSong();
    },
-   ramdomSong: function () {
+   randomSong: function () {
       let newIndex;
       do {
          newIndex = Math.floor(Math.random() * this.songs.length);
@@ -233,6 +247,8 @@ const app = {
    },
 
    start: function () {
+      /// load config vào ứng dụng
+      this.loadConfig();
       // Định nghĩa thuộc tính cho object
       this.defineProperties();
       // Tải thông tin bài hát đầu tiên vào UI khi đang chạy ứng dụng
@@ -241,6 +257,10 @@ const app = {
       this.handleEvents();
       //Render playlist
       this.render();
+
+      //hiện thị trạng thái ban đầu của buttons
+      randomBtn.classList.toggle("active", this.isRandom);
+      repeatBtn.classList.toggle("active", this.isRepeat);
    },
 };
 
